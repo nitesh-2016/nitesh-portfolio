@@ -1,0 +1,189 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout 
+  title="Experience"
+  description="11+ years of professional experience as Technical Architect and Backend Engineer, leading distributed systems and microservices delivery."
+>
+  <div class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold mb-12">Professional Experience</h1>
+        
+        <div class="space-y-12">
+          <!-- InTimeTec -->
+          <div class="border-l-4 border-accent-600 dark:border-accent-400 pl-6">
+            <div class="flex flex-wrap justify-between items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">InTimeTec</h2>
+                <p class="text-lg text-accent-600 dark:text-accent-400">Technical Architect / Solutions Architect</p>
+              </div>
+              <div class="text-right">
+                <p class="text-gray-600 dark:text-gray-400 font-medium">Aug 2023 – Present</p>
+                <p class="text-sm text-gray-500 dark:text-gray-500">Jaipur / Client Engagements</p>
+              </div>
+            </div>
+            
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+              Lead solution architecture and hands-on delivery across concurrent enterprise and government platforms. Define system architecture, messaging topology, workflow orchestration, and technical strategy from RFP through production, while mentoring engineering teams.
+            </p>
+            
+            <!-- Projects -->
+            <div class="space-y-6 ml-4">
+              <!-- Nebula -->
+              <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Nebula — Robotic Workflow & Mission Orchestration Platform</h3>
+                  <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">Oct 2025 – Present</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">
+                  Event-driven robotic mission platform (n8n-style design/test/execute) across heterogeneous robot fleets
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Architected distributed, event-driven microservices platform (NestJS, Kafka, RabbitMQ, Debezium, Redis, PostgreSQL, Flink, QuestDB, Temporal) for platform-wide robotic mission orchestration</li>
+                  <li>Designed and delivered Mission Orchestrator: generic DAG execution with node-type dispatch, I/O propagation, and resilient error handling for multi-step mission design, test, and runtime</li>
+                  <li>Established hybrid E2E testing (Jest, Docker Compose, Temporal) plus infrastructure probes for Kafka, Debezium, Redis, and RabbitMQ</li>
+                  <li>Defined shared API contracts across services using OpenAPI/Orval and Zod</li>
+                  <li>Delivered mission nodes including Robot.command (motion.navigate, compartment control, LiveKit camera streaming) and Sensor integration for KONE elevators</li>
+                </ul>
+              </div>
+              
+              <!-- Al-Jouf -->
+              <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Strategic Office for Al-Jouf Region — Saudi Government Digital Platform</h3>
+                  <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">Nov 2024 – Sept 2025</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">
+                  Monorepo digital government platform: bilingual citizen portal, e-services, CMS, identity — on-prem Kubernetes
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Led solution architecture for monorepo digital-government platform (.NET microservices + Next.js) on on-prem Kubernetes</li>
+                  <li>Delivered bilingual citizen portal and e-services with AR/EN RTL/LTR support targeting WCAG 2.1 AA</li>
+                  <li>Integrated Camunda BPMN for e-service approvals, Orchard Core CMS, and Nafath + Keycloak identity</li>
+                  <li>Platform covered search, notifications, reporting, audit, antivirus, and AI chatbot</li>
+                </ul>
+              </div>
+              
+              <!-- Scenne -->
+              <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Scenne — Video-Sharing / Social MVP</h3>
+                  <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">Jun 2024 – Oct 2024</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">
+                  Client engagement: Node.js, PostgreSQL, AWS S3, RabbitMQ, React Native
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Architected and delivered video-sharing MVP with auth, social graph (follow/like/comment/share), and feed delivery</li>
+                  <li>Implemented Redis feed/metadata caching and RabbitMQ for async orchestration</li>
+                  <li>Enabled upload → FFmpeg compression → CDN playback path on AWS (S3, Lambda) with Docker/Kubernetes deployment</li>
+                </ul>
+              </div>
+              
+              <!-- Blue Cross of Idaho -->
+              <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Blue Cross of Idaho (BCI) — Healthcare Data Pipeline</h3>
+                  <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">Aug 2023 – Jun 2024</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400 italic mb-3">
+                  AWS Glue, Kafka MSK, Snowflake
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 text-sm">
+                  <li>Designed enterprise clinical data pipeline ingesting CDEs/CCD/ADT into Snowflake via AWS Glue transforms and Kafka (MSK) streaming</li>
+                  <li>Migrated legacy S3 data lake into structured Snowflake datasets for analytics-ready BI and reporting</li>
+                  <li>Drove end-to-end delivery: requirements, architecture, API integration, CI/CD, and operational support</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Falabella -->
+          <div class="border-l-4 border-gray-300 dark:border-gray-700 pl-6">
+            <div class="flex flex-wrap justify-between items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Falabella</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300">Lead Software Engineer</p>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 font-medium">Jun 2022 – Jun 2023</p>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+              <li>Led backend architecture on SODIMAC B2B e-commerce microservices (Node.js) enabling merchants to list and manage products for B2C channels</li>
+              <li>Built React UIs on Flux-style state model and integrated Firestore for real-time sync</li>
+              <li>Containerized services with Docker and contributed to CI/CD and performance hardening</li>
+            </ul>
+          </div>
+          
+          <!-- EPAM Systems -->
+          <div class="border-l-4 border-gray-300 dark:border-gray-700 pl-6">
+            <div class="flex flex-wrap justify-between items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">EPAM Systems</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300">Lead Software Engineer</p>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 font-medium">Jul 2021 – Jun 2022</p>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+              <li>Delivered CTC-CDS experience APIs for Cantire Corp's Core Digital Services / ODP platform on TypeScript, Node.js, Inversify, and Tsoa</li>
+              <li>Owned microservice API modules consumed across e-commerce experience surfaces</li>
+              <li>Collaborated with distributed teams to ship and harden CDS APIs used by multiple ODP modules</li>
+            </ul>
+          </div>
+          
+          <!-- Scry Analytics -->
+          <div class="border-l-4 border-gray-300 dark:border-gray-700 pl-6">
+            <div class="flex flex-wrap justify-between items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Scry Analytics</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300">Senior Full-Stack Developer</p>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 font-medium">Feb 2019 – Jul 2021</p>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+              <li>Built VoCP (Voice of Cancer Patients): Node-backed platform surfacing AI-generated insights and analytics from large-scale cancer-related conversations</li>
+              <li>Delivered Collatio: document visualization and reconciliation (banking/gov docs) with Node.js, Angular, d3.js, MongoDB, Elasticsearch, Redis, and Docker</li>
+            </ul>
+          </div>
+          
+          <!-- InTimeTec (Earlier) -->
+          <div class="border-l-4 border-gray-300 dark:border-gray-700 pl-6">
+            <div class="flex flex-wrap justify-between items-start mb-4">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">InTimeTec</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300">Senior Software Engineer</p>
+              </div>
+              <p class="text-gray-600 dark:text-gray-400 font-medium">Aug 2015 – Feb 2019</p>
+            </div>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+              <li>Developed Cartos, a cloud fleet optimization/visualization platform for MPS providers (Node.js, Angular, Java Spring Boot, MongoDB, Elasticsearch, Redis, RabbitMQ)</li>
+              <li>Built Portico on top of Cartos to integrate HP fleet tools (SOLD, Dart, etc.) with async messaging and search/cache layers</li>
+              <li>Established early microservices + messaging patterns (RabbitMQ) and CI/CD practices</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+            Interested in learning more about my experience?
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="/nitesh-portfolio/resume"
+              class="inline-flex items-center px-6 py-3 bg-accent-600 hover:bg-accent-700 text-white font-medium rounded-lg transition-colors"
+            >
+              View Full Resume
+            </a>
+            <a
+              href="/nitesh-portfolio/contact"
+              class="inline-flex items-center px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg transition-colors"
+            >
+              Get in Touch
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>

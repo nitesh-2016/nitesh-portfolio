@@ -1,0 +1,6 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nitesh-2016.github.io/nitesh-portfolio/sitemap-index.xml

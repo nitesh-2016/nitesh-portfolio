@@ -1,0 +1,223 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const skillCategories = [
+  {
+    title: "Languages & Frameworks",
+    skills: [
+      { name: "TypeScript", level: "expert" },
+      { name: "Node.js", level: "expert" },
+      { name: "NestJS", level: "expert" },
+      { name: "Next.js", level: "advanced" },
+      { name: "React", level: "advanced" },
+      { name: "Angular", level: "advanced" },
+      { name: "Vue", level: "intermediate" },
+      { name: "Java/Spring", level: "intermediate" },
+      { name: ".NET", level: "intermediate" },
+      { name: "Python", level: "intermediate" },
+    ]
+  },
+  {
+    title: "Architecture & Design",
+    skills: [
+      { name: "Microservices Architecture", level: "expert" },
+      { name: "Event-Driven Systems", level: "expert" },
+      { name: "Distributed Systems", level: "expert" },
+      { name: "Solutions Architecture", level: "expert" },
+      { name: "API Gateway / BFF", level: "expert" },
+      { name: "DAG / Workflow Orchestration", level: "expert" },
+      { name: "OpenAPI Contracts", level: "advanced" },
+      { name: "RFP → Production Delivery", level: "expert" },
+    ]
+  },
+  {
+    title: "Messaging & Orchestration",
+    skills: [
+      { name: "Kafka", level: "expert" },
+      { name: "RabbitMQ", level: "expert" },
+      { name: "Temporal", level: "expert" },
+      { name: "Debezium", level: "advanced" },
+      { name: "Flink", level: "advanced" },
+      { name: "MQTT", level: "intermediate" },
+      { name: "Camunda", level: "intermediate" },
+    ]
+  },
+  {
+    title: "Data & Storage",
+    skills: [
+      { name: "PostgreSQL", level: "expert" },
+      { name: "Redis", level: "expert" },
+      { name: "Prisma", level: "advanced" },
+      { name: "MongoDB", level: "advanced" },
+      { name: "Elasticsearch", level: "advanced" },
+      { name: "QuestDB", level: "intermediate" },
+      { name: "Snowflake", level: "intermediate" },
+    ]
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: [
+      { name: "AWS (S3, Lambda, MSK, Glue)", level: "advanced" },
+      { name: "Docker", level: "expert" },
+      { name: "Kubernetes", level: "advanced" },
+      { name: "CI/CD", level: "advanced" },
+      { name: "GitHub Actions", level: "advanced" },
+    ]
+  },
+  {
+    title: "Testing & Quality",
+    skills: [
+      { name: "Jest", level: "expert" },
+      { name: "Docker Compose E2E", level: "advanced" },
+      { name: "OpenAPI / Orval", level: "advanced" },
+      { name: "Zod", level: "advanced" },
+      { name: "Infrastructure Testing", level: "advanced" },
+    ]
+  },
+];
+---
+
+<MainLayout 
+  title="Skills"
+  description="Technical skills spanning architecture, backend development, messaging systems, and DevOps. Expert in Node.js, TypeScript, NestJS, Kafka, and distributed systems."
+>
+  <div class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4">Technical Skills</h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
+          Expertise spanning architecture, distributed systems, event-driven microservices, and modern full-stack development
+        </p>
+        
+        <div class="mb-12 bg-gradient-to-r from-accent-50 to-blue-50 dark:from-accent-900/20 dark:to-blue-900/20 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Core Strengths</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Microservices Architecture</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Designing and delivering distributed systems at enterprise scale</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Event-Driven Systems</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Kafka, RabbitMQ, and resilient messaging topologies</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Workflow Orchestration</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Temporal, DAG execution, and complex process automation</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-accent-600 dark:text-accent-400 mt-1 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-1">Solutions Architecture</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">RFP to production: requirements, design, delivery, operations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="space-y-10">
+          {skillCategories.map((category) => (
+            <div>
+              <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">{category.title}</h2>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {category.skills.map((skill) => (
+                  <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 hover:shadow-md transition-shadow">
+                    <div class="flex justify-between items-start mb-2">
+                      <h3 class="font-semibold text-gray-900 dark:text-white">{skill.name}</h3>
+                      <span class={`text-xs px-2 py-1 rounded ${
+                        skill.level === 'expert' 
+                          ? 'bg-accent-100 text-accent-700 dark:bg-accent-900/30 dark:text-accent-400' 
+                          : skill.level === 'advanced'
+                          ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                          : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-400'
+                      }`}>
+                        {skill.level}
+                      </span>
+                    </div>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                      <div class={`h-2 rounded-full ${
+                        skill.level === 'expert' 
+                          ? 'bg-accent-600 dark:bg-accent-400 w-full' 
+                          : skill.level === 'advanced'
+                          ? 'bg-blue-600 dark:bg-blue-400 w-4/5'
+                          : 'bg-gray-400 dark:bg-gray-500 w-3/5'
+                      }`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+          <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Experience Level</h2>
+            <div class="grid md:grid-cols-3 gap-6 mb-6">
+              <div>
+                <div class="flex items-center mb-2">
+                  <span class="inline-block w-4 h-4 rounded bg-accent-600 dark:bg-accent-400 mr-2"></span>
+                  <span class="font-semibold text-gray-900 dark:text-white">Expert</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">5+ years of deep, production experience</p>
+              </div>
+              <div>
+                <div class="flex items-center mb-2">
+                  <span class="inline-block w-4 h-4 rounded bg-blue-600 dark:bg-blue-400 mr-2"></span>
+                  <span class="font-semibold text-gray-900 dark:text-white">Advanced</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">3+ years, regularly used in projects</p>
+              </div>
+              <div>
+                <div class="flex items-center mb-2">
+                  <span class="inline-block w-4 h-4 rounded bg-gray-400 dark:bg-gray-500 mr-2"></span>
+                  <span class="font-semibold text-gray-900 dark:text-white">Intermediate</span>
+                </div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Working knowledge, used in production</p>
+              </div>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">
+              These skills represent hands-on production experience across multiple projects and domains. I continuously adapt my technical toolkit to deliver the right solution for each platform's requirements.
+            </p>
+          </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+            Want to see these skills in action?
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="/nitesh-portfolio/work"
+              class="inline-flex items-center px-6 py-3 bg-accent-600 hover:bg-accent-700 text-white font-medium rounded-lg transition-colors"
+            >
+              View Selected Work
+            </a>
+            <a
+              href="/nitesh-portfolio/experience"
+              class="inline-flex items-center px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg transition-colors"
+            >
+              See Experience
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</MainLayout>
