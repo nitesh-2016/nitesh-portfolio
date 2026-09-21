@@ -1,0 +1,161 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const [featured, ...rest] = posts;
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function heroSrc(path: string) {
+  return `${base}${path.replace(/^\//, '')}`;
+}
+---
+
+<MainLayout
+  title="Blog"
+  description="Technical articles and insights from Nitesh Sharma on distributed systems, microservices architecture, and workflow orchestration."
+>
+  <section class="relative overflow-hidden bg-gradient-to-br from-gray-50 via-accent-50/40 to-blue-50 dark:from-gray-900 dark:via-accent-900/20 dark:to-gray-800">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-40 dark:opacity-25"
+      style="background-image: radial-gradient(circle at 1px 1px, rgb(2 132 199 / 0.18) 1px, transparent 0); background-size: 28px 28px;"
+    ></div>
+    <div class="container relative mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-700 dark:text-accent-400 mb-3">
+          Writing
+        </p>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-accent-700 to-accent-400 bg-clip-text text-transparent">
+          Blog
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
+          Notes on distributed systems, contracts, and building platforms that stay honest under change.
+        </p>
+        {
+          posts.length > 0 && (
+            <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+              {posts.length} {posts.length === 1 ? 'article' : 'articles'}
+            </p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16 bg-white dark:bg-gray-900 min-h-[50vh]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto space-y-14">
+        {
+          featured && (
+            <article>
+              <div class="flex items-end justify-between gap-4 mb-5">
+                <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-accent-700 dark:text-accent-400">
+                  Latest
+                </h2>
+              </div>
+              <a
+                href={`${base}blog/${featured.slug}/`}
+                class="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900 rounded-2xl"
+              >
+                <div class="overflow-hidden rounded-2xl bg-gradient-to-br from-accent-50 to-blue-50 dark:from-accent-900/25 dark:to-blue-900/20 ring-1 ring-accent-100/80 dark:ring-accent-800/40 transition-shadow duration-300 group-hover:shadow-xl group-hover:shadow-accent-600/10">
+                  <div class="relative overflow-hidden">
+                    <img
+                      src={heroSrc(featured.data.heroImage)}
+                      alt=""
+                      class="w-full aspect-[16/9] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                      loading="eager"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/55 via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                      <div class="flex flex-wrap items-center gap-2 text-sm text-white/85 mb-2">
+                        <time datetime={featured.data.pubDate.toISOString()}>
+                          {formatDate(featured.data.pubDate)}
+                        </time>
+                        {featured.data.tags.slice(0, 3).map((tag) => (
+                          <span class="rounded-full bg-white/15 px-2.5 py-0.5 text-xs font-medium backdrop-blur-sm">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h3 class="text-2xl sm:text-3xl font-bold text-white leading-tight max-w-3xl">
+                        {featured.data.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="p-6 sm:p-8">
+                    <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
+                      {featured.data.description}
+                    </p>
+                    <span class="inline-flex items-center text-accent-700 dark:text-accent-400 font-medium group-hover:gap-2 transition-all">
+                      Read article
+                      <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          )
+        }
+
+        {
+          rest.length > 0 && (
+            <div>
+              <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-accent-700 dark:text-accent-400 mb-6">
+                More articles
+              </h2>
+              <ul class="grid gap-6 sm:grid-cols-2">
+                {rest.map((post) => (
+                  <li>
+                    <a
+                      href={`${base}blog/${post.slug}/`}
+                      class="group flex h-full flex-col overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-accent-50/40 dark:from-gray-800/60 dark:to-accent-900/20 ring-1 ring-gray-200/80 dark:ring-gray-700/60 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-accent-600/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500"
+                    >
+                      <img
+                        src={heroSrc(post.data.heroImage)}
+                        alt=""
+                        class="w-full aspect-[16/10] object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        loading="lazy"
+                      />
+                      <div class="flex flex-1 flex-col p-5">
+                        <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-2">
+                          <time datetime={post.data.pubDate.toISOString()}>
+                            {formatDate(post.data.pubDate)}
+                          </time>
+                          {post.data.tags.slice(0, 2).map((tag) => (
+                            <span class="text-accent-700 dark:text-accent-400">{tag}</span>
+                          ))}
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+                          {post.data.title}
+                        </h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 mt-auto">
+                          {post.data.description}
+                        </p>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</MainLayout>
