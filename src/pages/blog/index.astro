@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const base = import.meta.env.BASE_URL;
+---
+
+<MainLayout
+  title="Blog"
+  description="Technical articles and insights from Nitesh Sharma on distributed systems, microservices architecture, and workflow orchestration."
+>
+  <div class="py-16 bg-white dark:bg-gray-900 min-h-[70vh]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold mb-4 text-center">Blog</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 text-center mb-12">
+          Notes on distributed systems, contracts, and building platforms that stay honest under change.
+        </p>
+
+        <ul class="space-y-10">
+          {
+            posts.map((post) => {
+              const heroSrc = `${base}${post.data.heroImage.replace(/^\//, '')}`;
+              return (
+                <li>
+                  <article class="group">
+                    <a
+                      href={`${base}blog/${post.slug}/`}
+                      class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 rounded-lg"
+                    >
+                      <img
+                        src={heroSrc}
+                        alt=""
+                        class="w-full aspect-[16/9] object-cover rounded-lg mb-5"
+                        loading="lazy"
+                      />
+                      <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-2">
+                        <time datetime={post.data.pubDate.toISOString()}>
+                          {post.data.pubDate.toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })}
+                        </time>
+                        {post.data.tags.length > 0 && (
+                          <span aria-hidden="true">·</span>
+                        )}
+                        <span class="flex flex-wrap gap-2">
+                          {post.data.tags.map((tag) => (
+                            <span class="text-accent-700 dark:text-accent-400">{tag}</span>
+                          ))}
+                        </span>
+                      </div>
+                      <h2 class="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors mb-2">
+                        {post.data.title}
+                      </h2>
+                      <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {post.data.description}
+                      </p>
+                    </a>
+                  </article>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</MainLayout>
