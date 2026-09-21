@@ -16,7 +16,9 @@ type Props = {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 const heroSrc = `${base}${post.data.heroImage.replace(/^\//, '')}`;
 const ogImage = `${base}${post.data.heroImage.replace(/^\//, '')}`;
 ---
