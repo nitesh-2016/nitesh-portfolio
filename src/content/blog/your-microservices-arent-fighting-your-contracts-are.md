@@ -12,8 +12,6 @@ tags:
   - typescript
 ---
 
-**Or: how OpenAPI, Orval, and Zod stop teams from quietly disagreeing until production**
-
 Here’s a scene I’ve lived more than once.
 
 Three services. One UI. Everyone ships on Friday.
