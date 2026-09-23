@@ -29,21 +29,18 @@ function heroSrc(path: string) {
   title="Blog"
   description="Technical articles and insights from Nitesh Sharma on distributed systems, microservices architecture, and workflow orchestration."
 >
-  <section class="relative overflow-hidden bg-gradient-to-br from-gray-50 via-accent-50/40 to-blue-50 dark:from-gray-900 dark:via-accent-900/20 dark:to-gray-800">
+  <section class="relative bg-gradient-to-br from-gray-50 via-accent-50/40 to-blue-50 dark:from-gray-900 dark:via-accent-900/20 dark:to-gray-800">
     <div
-      class="pointer-events-none absolute inset-0 opacity-40 dark:opacity-25"
+      class="pointer-events-none absolute inset-0 overflow-hidden opacity-40 dark:opacity-25"
       style="background-image: radial-gradient(circle at 1px 1px, rgb(2 132 199 / 0.18) 1px, transparent 0); background-size: 28px 28px;"
     ></div>
     <div class="container relative mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
       <div class="max-w-3xl">
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent-700 dark:text-accent-400 mb-3">
-          Writing
-        </p>
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-accent-700 to-accent-400 bg-clip-text text-transparent">
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight leading-normal mb-4 text-accent-700 dark:text-accent-400">
           Blog
         </h1>
         <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">
-          Notes on distributed systems, contracts, and building platforms that stay honest under change.
+          Technical notes on software architecture, distributed systems, DevOps, AI in the SDLC, and how platforms get designed and shipped.
         </p>
         {
           posts.length > 0 && (
