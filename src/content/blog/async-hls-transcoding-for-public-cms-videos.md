@@ -1,8 +1,8 @@
 ---
-title: "Serving large CMS videos without making pages wait"
-description: "Progressive MP4 behind a shared storage path is fine for documents. For public video it makes every page wait on one big file. Keep the original, encode HLS off the request path, and let any player fall back until the playlist is ready."
+title: "Async HLS Transcoding for Public CMS Videos"
+description: "Progressive MP4 behind a shared storage path is fine for documents. For public video it makes every page wait on one big file. Keep the original, run async HLS transcoding off the request path, and let any player fall back until the playlist is ready."
 pubDate: 2026-09-27
-heroImage: "/blog/serving-large-cms-videos-without-making-pages-wait.png"
+heroImage: "/blog/async-hls-transcoding-for-public-cms-videos.png"
 tags:
   - architecture
   - hls
