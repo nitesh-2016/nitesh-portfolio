@@ -16,7 +16,7 @@ const fullTitle = title === "Home" ? "Nitesh Sharma - Technical Architect" : `${
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,10 +48,7 @@ const fullTitle = title === "Home" ? "Nitesh Sharma - Technical Architect" : `${
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
+        return 'dark';
       })();
       
       if (theme === 'dark') {
