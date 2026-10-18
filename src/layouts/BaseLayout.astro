@@ -7,12 +7,12 @@ interface Props {
 
 const { 
   title, 
-  description = "Nitesh Sharma, Technical & Solution Architect with 11+ years designing enterprise platforms: AI and agentic systems, event-driven microservices, workflow orchestration and data streaming.",
+  description = "Nitesh Sharma, Solution Architect with 11+ years designing enterprise platforms: AI and agentic systems, event-driven architecture, workflow orchestration and data streaming.",
   ogImage = "/nitesh-portfolio/og-image.png"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title === "Home" ? "Nitesh Sharma - Technical Architect" : `${title} - Nitesh Sharma`;
+const fullTitle = title === "Home" ? "Nitesh Sharma - Solution Architect" : `${title} - Nitesh Sharma`;
 ---
 
 <!doctype html>
