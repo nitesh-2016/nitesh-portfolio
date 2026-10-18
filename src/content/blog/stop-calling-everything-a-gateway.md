@@ -46,7 +46,7 @@ A gateway is **infrastructure policy**, not “where we put product features.”
 
 ### BFF (Backend for Frontend) — “this experience needs its own backend shape”
 
-A backend owned by (or for) a specific client experience: web app, admin console, partner portal, mobile. Typical jobs:
+A backend owned by (or for) a specific client experience: web app, admin console, partner platform, mobile. Typical jobs:
 
 - aggregate 2–N service calls into one screen-shaped response
 - reshape DTOs so the UI doesn’t speak three dialects

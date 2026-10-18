@@ -4,26 +4,26 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout 
   title="Selected Work"
-  description="Case studies from recent projects including robotic mission orchestration and Saudi government digital platform architecture."
+  description="Case studies from recent projects including robotic mission orchestration and Saudi Digital Government Platform architecture."
 >
   <div class="py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl font-bold mb-4">Selected Work</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
-          Architecture highlights from recent enterprise and government platforms
+          Architecture highlights from recent enterprise systems and Digital Government Platforms
         </p>
         
         <div class="space-y-12">
           <!-- Nebula -->
           <article class="bg-gradient-to-br from-accent-50 to-blue-50 dark:from-accent-900/20 dark:to-blue-900/20 rounded-xl overflow-hidden">
             <div class="p-8 md:p-10">
-              <div class="flex items-start justify-between mb-4">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-1 sm:gap-0">
                 <div>
                   <h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Nebula</h2>
                   <p class="text-lg text-accent-700 dark:text-accent-300">Robotic Workflow & Mission Orchestration Platform</p>
                 </div>
-                <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">May 2025 – Present</span>
+                <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap sm:ml-4">May 2025 – Present</span>
               </div>
               
               <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg">
@@ -34,6 +34,12 @@ import MainLayout from '../layouts/MainLayout.astro';
                 <div>
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">Architecture Highlights</h3>
                   <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-accent-600 dark:text-accent-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>Architected LLM-driven workflow orchestration: natural-language intent turned into validated DAG missions via LLM tool-calling, Zod schema validation, and human-in-the-loop approval.</span>
+                    </li>
                     <li class="flex items-start">
                       <svg class="w-5 h-5 text-accent-600 dark:text-accent-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -108,16 +114,16 @@ import MainLayout from '../layouts/MainLayout.astro';
           <!-- Al-Jouf -->
           <article class="bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20 rounded-xl overflow-hidden">
             <div class="p-8 md:p-10">
-              <div class="flex items-start justify-between mb-4">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-1 sm:gap-0">
                 <div>
                   <h2 class="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Strategic Office for Al-Jouf Region</h2>
                   <p class="text-lg text-purple-700 dark:text-purple-300">Saudi Government Digital Platform</p>
                 </div>
-                <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">Sept 2025 – Present</span>
+                <span class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap sm:ml-4">Sept 2025 – Present</span>
               </div>
               
               <p class="text-gray-700 dark:text-gray-300 mb-6 text-lg">
-                Monorepo digital government platform delivering bilingual citizen services, e-services, CMS, and identity management on on-premises Kubernetes
+                Monorepo Digital Government Platform delivering bilingual citizen services, e-services, CMS, and identity management on on-premises Kubernetes
               </p>
               
               <div class="grid md:grid-cols-2 gap-6 mb-8">
@@ -158,25 +164,31 @@ import MainLayout from '../layouts/MainLayout.astro';
                       <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
-                      <span>Bilingual AR/EN portal with RTL/LTR support</span>
+                      <span>Production-grade RAG citizen assistant grounded in the platform's own content.</span>
                     </li>
                     <li class="flex items-start">
                       <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
-                      <span>WCAG 2.1 AA accessibility compliance</span>
+                      <span>Designed asynchronous HLS transcoding for CMS-managed public videos: uploads are queued, transcoded into adaptive bitrate HLS renditions, and served for smooth playback on any public page embed.</span>
                     </li>
                     <li class="flex items-start">
                       <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
-                      <span>Integrated CMS, search, notifications, reporting, audit</span>
+                      <span>Bilingual AR/EN citizen services platform with RTL/LTR support</span>
                     </li>
                     <li class="flex items-start">
                       <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
-                      <span>Antivirus and AI chatbot integration</span>
+                      <span>Built to WCAG 2.1 AA accessibility standards</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-purple-600 dark:text-purple-400 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      <span>Integrated CMS, search, notifications, reporting, audit, and antivirus</span>
                     </li>
                   </ul>
                 </div>
@@ -202,7 +214,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             <div class="grid md:grid-cols-2 gap-6">
               <div class="bg-white dark:bg-gray-900/50 rounded-lg p-6">
                 <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">Scenne</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Video-Sharing / Social MVP</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Video-Sharing & Social Platform</p>
                 <p class="text-gray-700 dark:text-gray-300 text-sm">
                   Node.js microservices platform with social graph, Redis caching, RabbitMQ orchestration, and AWS S3/Lambda video processing pipeline
                 </p>

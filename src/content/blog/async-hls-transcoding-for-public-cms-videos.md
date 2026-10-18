@@ -89,7 +89,7 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  portal["Public web app"] -->|"GET /storage/.../hls or MP4"| store["Object storage"]
+  webapp["Public web app"] -->|"GET /storage/.../hls or MP4"| store["Object storage"]
 ```
 
 ffmpeg does not run inside the CMS process or inside the web pod. Those stay responsive. The heavy work is a queued job — the same pattern you already use for other asynchronous platform work.
