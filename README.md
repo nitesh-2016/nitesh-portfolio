@@ -1,6 +1,6 @@
 # Nitesh Sharma - Portfolio
 
-A polished, professional digital resume and portfolio site built with Astro, TypeScript, and Tailwind CSS.
+A personal portfolio site and technical blog built with Astro, TypeScript, and Tailwind CSS.
 
 [![Deploy to GitHub Pages](https://github.com/nitesh-2016/nitesh-portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/nitesh-2016/nitesh-portfolio/actions/workflows/deploy.yml)
 
@@ -8,7 +8,7 @@ A polished, professional digital resume and portfolio site built with Astro, Typ
 
 ## About
 
-This portfolio showcases the work and experience of Nitesh Sharma, a Technical Architect / Solutions Architect with 11+ years of experience in distributed systems, event-driven microservices, and workflow orchestration.
+This portfolio showcases the work, architecture writing, and experience of Nitesh Sharma, a Technical & Solution Architect with 11+ years designing enterprise platforms, specializing in AI and agentic systems, event-driven microservices, and workflow orchestration.
 
 ## Features
 
@@ -16,7 +16,7 @@ This portfolio showcases the work and experience of Nitesh Sharma, a Technical A
 - 📱 **Mobile-First**: Responsive design that works on all devices
 - 🎨 **Dark Mode**: Optional dark theme with system preference detection
 - ♿ **Accessible**: WCAG 2.1 compliant with semantic HTML
-- 🖨️ **Print-Friendly**: Dedicated resume page optimized for printing/PDF export
+- 📝 **Technical Blog**: Markdown-based blog with syntax highlighting
 - 📊 **SEO Optimized**: Meta tags, Open Graph, and sitemap included
 - 🚀 **Static Site**: Minimal JavaScript, mostly pre-rendered HTML
 
@@ -34,7 +34,7 @@ This portfolio showcases the work and experience of Nitesh Sharma, a Technical A
 ├── public/              # Static assets
 │   ├── favicon.svg
 │   ├── robots.txt
-│   └── cover-letter.pdf
+│   └── og-image.png
 ├── src/
 │   ├── components/      # Reusable components
 │   │   ├── Header.astro
@@ -48,9 +48,8 @@ This portfolio showcases the work and experience of Nitesh Sharma, a Technical A
 │   │   ├── experience.astro   # Experience page
 │   │   ├── skills.astro       # Skills page
 │   │   ├── work.astro         # Selected work
-│   │   ├── resume.astro       # Printable resume
 │   │   ├── contact.astro      # Contact page
-│   │   └── blog.astro         # Blog (coming soon)
+│   │   └── blog/              # Technical blog
 │   └── styles/          # Global styles
 │       └── global.css
 ├── astro.config.mjs     # Astro configuration
@@ -184,9 +183,9 @@ All content is in the `src/pages/` directory. Key pages to update:
 - `skills.astro` - Technical skills and expertise
 - `work.astro` - Featured case studies
 - `contact.astro` - Contact information
-- `resume.astro` - Printable resume format
+- `blog/` - Technical blog posts (Markdown)
 
-Replace `public/cover-letter.pdf` with your own cover letter.
+Update `public/og-image.png` for social media previews.
 
 ## Scripts
 

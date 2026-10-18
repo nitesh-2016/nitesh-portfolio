@@ -3,6 +3,29 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 const skillCategories = [
   {
+    title: "AI & Agentic Systems",
+    skills: [
+      { name: "LLM Application Integration", level: "advanced" },
+      { name: "RAG Pipelines", level: "advanced" },
+      { name: "Embeddings & Vector Search", level: "advanced" },
+      { name: "Prompt & Context Management", level: "advanced" },
+      { name: "LLM Tool-Calling / Agentic Workflows", level: "advanced" },
+      { name: "Human-in-the-Loop Guardrails", level: "advanced" },
+    ]
+  },
+  {
+    title: "Solution & Enterprise Architecture",
+    skills: [
+      { name: "Solution Design RFP→Production", level: "expert" },
+      { name: "Target Architecture & Roadmaps", level: "expert" },
+      { name: "Integration Strategy", level: "expert" },
+      { name: "NFRs / Quality Attributes", level: "expert" },
+      { name: "ADRs / Architecture Reviews", level: "expert" },
+      { name: "API Gateway / BFF", level: "expert" },
+      { name: "Contract-First APIs", level: "expert" },
+    ]
+  },
+  {
     title: "Languages & Frameworks",
     skills: [
       { name: "TypeScript", level: "expert" },
@@ -23,11 +46,8 @@ const skillCategories = [
       { name: "Microservices Architecture", level: "expert" },
       { name: "Event-Driven Systems", level: "expert" },
       { name: "Distributed Systems", level: "expert" },
-      { name: "Solutions Architecture", level: "expert" },
-      { name: "API Gateway / BFF", level: "expert" },
       { name: "DAG / Workflow Orchestration", level: "expert" },
       { name: "OpenAPI Contracts", level: "advanced" },
-      { name: "RFP → Production Delivery", level: "expert" },
     ]
   },
   {
@@ -79,14 +99,14 @@ const skillCategories = [
 
 <MainLayout 
   title="Skills"
-  description="Technical skills spanning architecture, backend development, messaging systems, and DevOps. Expert in Node.js, TypeScript, NestJS, Kafka, and distributed systems."
+  description="Technical skills spanning AI and agentic systems, solution and enterprise architecture, event-driven microservices, and distributed systems."
 >
   <div class="py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-5xl mx-auto">
         <h1 class="text-4xl font-bold mb-4">Technical Skills</h1>
         <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
-          Expertise spanning architecture, distributed systems, event-driven microservices, and modern full-stack development
+          Expertise spanning AI and agentic systems, solution and enterprise architecture, event-driven microservices, and distributed systems
         </p>
         
         <div class="mb-12 bg-gradient-to-r from-accent-50 to-blue-50 dark:from-accent-900/20 dark:to-blue-900/20 rounded-lg p-8">

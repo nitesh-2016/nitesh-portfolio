@@ -1,0 +1,38 @@
+
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#111827;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1f2937;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  
+  <!-- Accent gradient bar -->
+  <rect x="0" y="0" width="1200" height="8" fill="#6366f1"/>
+  
+  <!-- Name -->
+  <text x="600" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#ffffff" text-anchor="middle">
+    Nitesh Sharma
+  </text>
+  
+  <!-- Title -->
+  <text x="600" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="600" fill="#6366f1" text-anchor="middle">
+    Solution Architect
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="400" fill="#9ca3af" text-anchor="middle">
+    AI &amp; Agentic Systems
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#d1d5db" text-anchor="middle">
+    11+ years designing enterprise platforms
+  </text>
+  
+  <!-- Bottom accent -->
+  <rect x="0" y="622" width="1200" height="8" fill="#6366f1"/>
+</svg>

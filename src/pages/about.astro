@@ -4,7 +4,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 
 <MainLayout 
   title="About"
-  description="Technical Architect with 11+ years of experience architecting enterprise-scale distributed systems, event-driven microservices, and workflow orchestration platforms."
+  description="Technical Architect with 11+ years in solution and enterprise architecture, now focused on LLM-powered and agentic systems in production."
 >
   <div class="py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,72 +13,38 @@ import MainLayout from '../layouts/MainLayout.astro';
         
         <div class="prose prose-lg dark:prose-invert max-w-none">
           <p class="text-xl text-gray-700 dark:text-gray-300 mb-6">
-            Technical Architect with 11+ years of experience architecting and delivering enterprise-scale distributed systems, event-driven microservices, and workflow orchestration platforms.
+            I'm a Technical Architect with 11+ years of experience designing and delivering enterprise and government-scale platforms, from first RFP and solution design through to production. My work sits where architecture meets execution: event-driven microservices, workflow and DAG orchestration, data and streaming pipelines, and the contracts and guardrails that let many teams build safely on one platform.
           </p>
           
           <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            I specialize in Node.js, TypeScript, and NestJS, with deep expertise in Kafka, RabbitMQ, Redis, Temporal, PostgreSQL, and API Gateway/BFF architectures. My work focuses on designing scalable system architectures, defining messaging topologies, and leading solution delivery from RFPs through production deployment.
+            Lately, much of that work involves AI. I've architected LLM-driven workflow orchestration, where natural-language intent becomes a validated, human-approved execution plan, and a retrieval-augmented (RAG) assistant grounded in an organisation's own content. I'm designing production-grade agentic AI systems and working through what governance, observability and failure handling they need to be trusted in enterprise environments.
+          </p>
+          
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
+            I write about these trade-offs on the blog. Architecture decisions are easier to get right when they're argued out in the open.
           </p>
           
           <div class="bg-accent-50 dark:bg-accent-900/20 rounded-lg p-6 mb-8">
-            <h2 class="text-2xl font-bold mb-4 text-accent-900 dark:text-accent-100">Core Expertise</h2>
-            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
-              <li>✓ Enterprise distributed systems and microservices architecture</li>
-              <li>✓ Event-driven systems with Kafka, RabbitMQ, and MQTT</li>
-              <li>✓ Workflow orchestration using Temporal and DAG patterns</li>
-              <li>✓ API Gateway, BFF patterns, and OpenAPI contract design</li>
-              <li>✓ Solution architecture from RFP to production delivery</li>
-              <li>✓ Technical leadership and engineering team mentorship</li>
+            <h2 class="text-2xl font-bold mb-4 text-accent-900 dark:text-accent-100">Focus Areas</h2>
+            <ul class="space-y-3 text-gray-700 dark:text-gray-300">
+              <li><strong>AI & Agentic Systems:</strong> LLM tool-calling, RAG and agentic workflows designed with schema validation, human-in-the-loop approval and clear failure boundaries.</li>
+              <li><strong>Solution & Enterprise Architecture:</strong> Turning business goals and RFPs into target architectures, integration strategy, NFRs and delivery roadmaps that teams can actually build.</li>
+              <li><strong>Event-Driven & Distributed Systems:</strong> Microservices, messaging topologies and API/BFF boundaries that stay reliable under load and failure.</li>
+              <li><strong>Workflow & Process Orchestration:</strong> Durable, DAG-based orchestration (Temporal) for long-running, multi-step business and machine workflows.</li>
+              <li><strong>Data & Streaming Platforms:</strong> ETL/ELT and real-time pipelines (Kafka, Flink, Glue, Snowflake) that feed analytics and AI.</li>
+              <li><strong>Platform, Contracts & DevOps:</strong> Contract-first APIs, containerised delivery, CI/CD and hybrid E2E testing that let multiple teams ship safely.</li>
+              <li><strong>Technical Leadership:</strong> Architecture reviews, decision records and mentoring that scale design quality beyond one person.</li>
             </ul>
           </div>
           
           <h2 class="text-2xl font-bold mb-4">Current Focus</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            At InTimeTec, I lead architecture for complex enterprise platforms including:
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+            I lead architecture for complex enterprise and government platforms: robotic workflow orchestration with distributed microservices and Kafka event streaming, digital government platforms with e-services and workflow automation, healthcare data pipelines, social platforms, and B2B e-commerce systems.
           </p>
-          <ul class="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-8">
-            <li><strong>Nebula:</strong> Robotic workflow and mission orchestration platform with distributed microservices, Kafka event streaming, and Temporal workflow orchestration</li>
-            <li><strong>Al-Jouf Saudi Government Platform:</strong> Bilingual digital government platform with e-services, workflow automation, and on-premises Kubernetes deployment</li>
-            <li>Healthcare data pipelines, social platform MVPs, and B2B e-commerce systems</li>
-          </ul>
           
           <h2 class="text-2xl font-bold mb-4">Technology Stack</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
-            I work primarily with modern JavaScript/TypeScript ecosystems, complemented by experience across multiple languages and platforms for full-stack delivery:
-          </p>
-          <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <div>
-              <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">Backend & Architecture</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Node.js, NestJS, TypeScript, Java/Spring, .NET, Python</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">Messaging & Orchestration</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Kafka, RabbitMQ, Temporal, Debezium, Flink, MQTT</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">Data Systems</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">PostgreSQL, Redis, MongoDB, Elasticsearch, Snowflake</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">Frontend</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Next.js, React, Angular, Vue</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">Cloud & DevOps</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">AWS (S3, Lambda, MSK, Glue), Docker, Kubernetes, CI/CD</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 text-gray-900 dark:text-gray-100">Testing & Contracts</h3>
-              <p class="text-sm text-gray-600 dark:text-gray-400">Jest, OpenAPI/Orval, Zod, Docker Compose E2E</p>
-            </div>
-          </div>
-          
-          <h2 class="text-2xl font-bold mb-4">Location & Availability</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-2">
-            <strong>Based in:</strong> Jaipur, Rajasthan, India
-          </p>
           <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            <strong>Open to:</strong> Bengaluru, Delhi-NCR (Delhi/Gurugram/Noida), Hyderabad, Pune, and remote opportunities within India
+            I work primarily with modern JavaScript/TypeScript ecosystems (Node.js, NestJS, Next.js, React), complemented by experience across multiple languages and platforms for full-stack delivery. For a detailed breakdown, see the <a href="/nitesh-portfolio/skills" class="text-accent-600 dark:text-accent-400 hover:underline">Skills</a> page.
           </p>
           
           <h2 class="text-2xl font-bold mb-4">Education</h2>
@@ -93,7 +59,7 @@ import MainLayout from '../layouts/MainLayout.astro';
         <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
           <h2 class="text-2xl font-bold mb-6">Let's Connect</h2>
           <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            I'm open to discussing Technical Architect, Solutions Architect, and Staff/Principal Engineer opportunities.
+            Want to compare notes on architecture or AI systems? Get in touch or follow along on the blog.
           </p>
           <div class="flex flex-wrap gap-4">
             <a
@@ -103,10 +69,10 @@ import MainLayout from '../layouts/MainLayout.astro';
               Get in Touch
             </a>
             <a
-              href="/nitesh-portfolio/resume"
+              href="/nitesh-portfolio/blog"
               class="inline-flex items-center px-6 py-3 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg transition-colors"
             >
-              View Full Resume
+              Read the Blog
             </a>
           </div>
         </div>
