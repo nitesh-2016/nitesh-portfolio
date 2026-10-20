@@ -51,6 +51,10 @@ function ensureContainers(): HTMLElement[] {
 async function renderDiagrams(): Promise<void> {
   const theme = themeFromDom();
   const containers = ensureContainers();
+  
+  // Always set activeTheme to prevent infinite re-scheduling
+  activeTheme = theme;
+  
   if (containers.length === 0) return;
 
   mermaid.initialize({
@@ -58,7 +62,6 @@ async function renderDiagrams(): Promise<void> {
     theme,
     securityLevel: 'strict',
   });
-  activeTheme = theme;
 
   for (const el of containers) {
     const source = el.dataset.mermaidSource ?? '';
@@ -77,11 +80,16 @@ async function renderDiagrams(): Promise<void> {
   }
 }
 
+function hasDiagrams(): boolean {
+  return document.querySelectorAll('.mermaid-diagram').length > 0 || findMermaidPres().length > 0;
+}
+
 function scheduleRender(): void {
   if (rendering) return;
   rendering = renderDiagrams().finally(() => {
     rendering = null;
-    if (themeFromDom() !== activeTheme) {
+    // Only re-schedule if theme changed AND there are diagrams to render
+    if (hasDiagrams() && themeFromDom() !== activeTheme) {
       scheduleRender();
     }
   });
@@ -89,7 +97,8 @@ function scheduleRender(): void {
 
 function watchTheme(): void {
   const observer = new MutationObserver(() => {
-    if (themeFromDom() !== activeTheme) {
+    // Only re-render if theme changed AND there are diagrams to render
+    if (hasDiagrams() && themeFromDom() !== activeTheme) {
       scheduleRender();
     }
   });
