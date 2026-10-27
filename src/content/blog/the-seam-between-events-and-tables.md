@@ -15,7 +15,7 @@ Here's a question that shows up in almost every platform architecture review.
 
 "Who owns the state for this entity?"
 
-Not "where does it live" that's easy. The hard part is: which system is allowed to **change** it without asking permission, and what happens when the other side falls behind?
+Not "where does it live": that's easy. The hard part is which system is allowed to **change** it without asking permission, and what happens when the other side falls behind.
 
 On platforms that started with a relational core and added async flows later (or started event-driven and realized some queries need joins), you end up with a hybrid. Part of the platform treats the database as the source of truth. Part of it streams events. Citizen-facing workflows often span both. Getting that seam wrong is how you end up with "the event says completed but the database says pending" bugs that take two teams and a Friday night to untangle.
 
@@ -59,7 +59,7 @@ For every meaningful entity, answer:
 
 The pattern: **one writer, many readers.** Readers get notifications or projections, not write access.
 
-When two services need to coordinate a write (rare but real think cross-cutting transactions), you either:
+When two services need to coordinate a write (rare but real, think cross-cutting transactions), you either:
 
 - make one service the coordinator (it calls the other and handles rollback)
 - or use a saga (orchestrated or choreographed, depending on complexity)
