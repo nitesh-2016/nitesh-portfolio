@@ -38,13 +38,13 @@ You add:
 
 That's it. You don't design topics. You don't explain partitions to product. You don't have a broker topology review.
 
-## A concrete case: billing a citizen service
+## A concrete case: billing a domain service
 
-Say a Digital Government Platform charges for document verification. The orchestrator finishes the workflow. You need to:
+Say a multi-service platform charges for document verification. The orchestrator finishes the workflow. You need to:
 
 1. Create an invoice in the billing service.
 2. Send a confirmation email.
-3. Update a public ledger (optional: sometimes there's an audit trail).
+3. Update a shared ledger (optional: sometimes there's an audit trail).
 
 Synchronous calls from the orchestrator would work until any downstream service is slow or restarting. You want async.
 
@@ -148,7 +148,7 @@ Reprocessing last month's billing events to backfill a new field, or rewinding a
 Windowed aggregations, joining streams, stateful event enrichment. That's what Kafka Streams, Flink, and friends are for. A worker that pulls from a queue can't do that cleanly.
 
 **Partition-level ordering matters and you have high throughput.**  
-All events for citizen X must be processed in order, and you're handling thousands per second. Kafka partitions give you that. A single queue with one consumer is a bottleneck.
+All events for user X must be processed in order, and you're handling thousands per second. Kafka partitions give you that. A single queue with one consumer is a bottleneck.
 
 **You're already running it and it's boring to your team.**  
 If Kafka is already in production, understood, and not causing operational pain, use it. Boring is relative.
@@ -219,7 +219,7 @@ If the key already exists, the insert is a no-op. The worker can query afterward
 - **Before**: if the ledger write fails, you might double-bill (prefer retries to be safe, or make the external call idempotent too)
 - **After**: if the external call fails, retry the whole handler; the ledger check skips duplicate attempts
 
-On most platforms, I do the external call first (with its own idempotency on the receiving service when possible), then write the ledger proof. Retries are cheap. Double-charging a citizen is not.
+On most platforms, I do the external call first (with its own idempotency on the receiving service when possible), then write the ledger proof. Retries are cheap. Double-charging a customer is not.
 
 ## Practical rollout
 
@@ -253,7 +253,7 @@ The message is a pointer and a small payload. Big data lives in storage or the D
 
 ## A story from the field (without the proprietary bits)
 
-On a Digital Government Platform with async job flows (document processing, identity verification, payment callbacks), the initial design had seven services calling each other synchronously. Timeouts were "tuned" every sprint. The ops team knew every service's retry behavior by heart because it came up in every incident.
+On a large-scale platform with async job flows (document processing, identity verification, payment callbacks), the initial design had seven services calling each other synchronously. Timeouts were "tuned" every sprint. The ops team knew every service's retry behavior by heart because it came up in every incident.
 
 We moved three hot paths to queue + worker + ledger. Outbox in the orchestrator. Workers in each domain service. Billing and notifications became independent. The dead-letter queue caught two message-schema bugs in the first week that would have been silent 500s before.
 
