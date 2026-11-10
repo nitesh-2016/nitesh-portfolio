@@ -1,6 +1,6 @@
 ---
 title: "The Seam Between Events and Tables"
-description: "When your Digital Government Platform is half event-driven, half database-centric, deciding who owns the truth for each entity and how to keep them in sync matters more than picking one side."
+description: "When your platform is half event-driven, half database-centric, deciding who owns the truth for each entity and how to keep them in sync matters more than picking one side."
 pubDate: 2026-10-30
 heroImage: "/blog/the-seam-between-events-and-tables.png"
 tags:
@@ -17,7 +17,7 @@ Here's a question that shows up in almost every platform architecture review.
 
 Not "where does it live": that's easy. The hard part is which system is allowed to **change** it without asking permission, and what happens when the other side falls behind.
 
-On platforms that started with a relational core and added async flows later (or started event-driven and realized some queries need joins), you end up with a hybrid. Part of the platform treats the database as the source of truth. Part of it streams events. Citizen-facing workflows often span both. Getting that seam wrong is how you end up with "the event says completed but the database says pending" bugs that take two teams and a Friday night to untangle.
+On platforms that started with a relational core and added async flows later (or started event-driven and realized some queries need joins), you end up with a hybrid. Part of the platform treats the database as the source of truth. Part of it streams events. User-facing workflows often span both. Getting that seam wrong is how you end up with "the event says completed but the database says pending" bugs that take two teams and a Friday night to untangle.
 
 ## The two mental models
 
@@ -35,13 +35,13 @@ Temporal queries are natural ("what did this look like last Tuesday?"). Fan-out 
 
 ### Hybrid: both, with boundaries
 
-Most Digital Government Platforms are not purely one or the other. You have:
+Most large-scale platforms are not purely one or the other. You have:
 
-- a citizen identity service with a database that owns user profiles
+- an identity service with a database that owns user profiles
 - a workflow orchestrator that publishes events when steps complete
 - an audit log that is append-only and event-sourced
 - a billing service with a ledger (database) and a queue for async jobs
-- citizen-facing UIs that need "current state" screens and real-time status updates
+- user-facing UIs that need "current state" screens and real-time status updates
 
 The question is not "which paradigm wins." It's **where do you draw the line, and how do the two sides stay consistent?**
 
@@ -51,11 +51,11 @@ For every meaningful entity, answer:
 
 | Entity | System of Record | Write Authority | How Others Learn | Consistency Mechanism |
 | --- | --- | --- | --- | --- |
-| **Citizen profile** | Identity service DB | Identity service only | Event: `profile.updated` | Outbox → event bus |
+| **User profile** | Identity service DB | Identity service only | Event: `profile.updated` | Outbox → event bus |
 | **Workflow state** | Orchestrator DB | Orchestrator only | Event: `workflow.stepCompleted` | Outbox → event bus |
 | **Invoice** | Billing service DB | Billing service only | Event: `invoice.created` | Outbox or queue |
 | **Audit entries** | Event log (append-only) | Any service can publish | Direct read from log | N/A (append-only) |
-| **Citizen-facing status** | Derived (read model) | Workflow events + identity events | Rebuilt from stream | Eventual consistency, reconciliation job |
+| **User-facing status** | Derived (read model) | Workflow events + identity events | Rebuilt from stream | Eventual consistency, reconciliation job |
 
 The pattern: **one writer, many readers.** Readers get notifications or projections, not write access.
 
@@ -77,13 +77,13 @@ This distinction matters in hybrid systems.
 ```json
 {
   "type": "profile.updated",
-  "citizenId": "abc-123",
+  "userId": "abc-123",
   "timestamp": "2026-10-30T10:15:00Z",
   "version": 42
 }
 ```
 
-The event is small. The consumer calls `GET /citizens/abc-123` to fetch the current profile. The database is still the truth.
+The event is small. The consumer calls `GET /users/abc-123` to fetch the current profile. The database is still the truth.
 
 Good when:
 
@@ -98,11 +98,11 @@ Good when:
 ```json
 {
   "type": "profile.updated",
-  "citizenId": "abc-123",
+  "userId": "abc-123",
   "timestamp": "2026-10-30T10:15:00Z",
   "version": 42,
   "payload": {
-    "email": "citizen@example.com",
+    "email": "user@example.com",
     "phone": "+1234567890",
     "preferences": { "language": "en" }
   }
@@ -123,7 +123,7 @@ Use **notification events** when the consumer needs the freshest state and the A
 
 Use **state-carrying events** when consumers need fast local reads and can rebuild from the stream.
 
-On platforms with citizen-facing workflows that span identity, orchestration, and billing, you often see both:
+On platforms with user-facing workflows that span identity, orchestration, and billing, you often see both:
 
 - identity publishes state-carrying events (consumers need name and contact info for screens)
 - orchestrator publishes notifications (consumers query the orchestrator API for full step details)
@@ -144,12 +144,12 @@ The **outbox pattern** makes publish durable:
 -- Domain transaction
 BEGIN;
 
-UPDATE citizen_profiles
+UPDATE user_profiles
 SET email = 'new@example.com', version = version + 1
-WHERE citizen_id = 'abc-123';
+WHERE user_id = 'abc-123';
 
 INSERT INTO outbox (id, event_type, payload, created_at)
-VALUES (gen_random_uuid(), 'profile.updated', '{"citizenId": "abc-123", "version": 42}', NOW());
+VALUES (gen_random_uuid(), 'profile.updated', '{"userId": "abc-123", "version": 42}', NOW());
 
 COMMIT;
 ```
@@ -187,7 +187,7 @@ Include a monotonic version or timestamp so consumers can detect gaps.
 ```json
 {
   "type": "profile.updated",
-  "citizenId": "abc-123",
+  "userId": "abc-123",
   "version": 42,
   "timestamp": "2026-10-30T10:15:00Z"
 }
@@ -196,7 +196,7 @@ Include a monotonic version or timestamp so consumers can detect gaps.
 If the consumer's last known version is 40 and the next event is 42, something is missing.
 
 **Run a reconciliation job.**  
-Periodically compare the read model to the system of record. For every citizen in the projection, fetch the current version from the identity service. If they don't match, log the diff and rebuild.
+Periodically compare the read model to the system of record. For every user in the projection, fetch the current version from the identity service. If they don't match, log the diff and rebuild.
 
 This is not a sign of failure. It's a safety net for distributed systems.
 
@@ -211,7 +211,7 @@ Reconciliation can be:
 ```mermaid
 flowchart TB
   subgraph "Database-Centric Services"
-    identityDB[("Identity DB<br/>(citizen profiles)")]
+    identityDB[("Identity DB<br/>(user profiles)")]
     identitySvc["Identity Service"]
     identitySvc --> identityDB
     
@@ -232,7 +232,7 @@ flowchart TB
   end
   
   subgraph "Read Models / Consumers"
-    statusUI["Citizen Status UI<br/>(read model)"]
+    statusUI["Status UI<br/>(read model)"]
     analytics["Analytics Service<br/>(read model)"]
     audit["Audit Log<br/>(append-only)"]
   end
@@ -247,28 +247,28 @@ flowchart TB
 
 **Who owns what:**
 
-- Identity service: authoritative for citizen profiles (DB)
+- Identity service: authoritative for user profiles (DB)
 - Orchestrator: authoritative for workflow state (DB, publishes events)
 - Billing service: authoritative for invoices (DB, publishes events)
 - Event bus: notification layer
 - Read models: eventual-consistency projections, reconcile periodically
 
-## Citizen-facing workflows that span both
+## User-facing workflows that span both
 
-Say a citizen submits a document verification request. The flow crosses:
+Say a user submits a document verification request. The flow crosses:
 
 1. **Orchestrator** creates a workflow (DB write, event published).
-2. **Identity service** checks the citizen's profile (DB read, maybe an event if profile is updated).
+2. **Identity service** checks the user's profile (DB read, maybe an event if profile is updated).
 3. **External adapter** verifies the document (async, publishes event when done).
 4. **Orchestrator** marks the step complete (DB write, event published).
 5. **Billing service** creates an invoice (DB write, event published).
-6. **Citizen status UI** shows "completed" (read model, rebuilt from events).
+6. **Status UI** shows "completed" (read model, rebuilt from events).
 
 Each service owns its write. Events flow between them. The UI never writes directly; it rebuilds from the stream.
 
-When the billing service is down, the workflow completes and the event is published. Billing catches up later. The citizen sees "completed" even if the invoice is pending. That's eventual consistency, and it's the design.
+When the billing service is down, the workflow completes and the event is published. Billing catches up later. The user sees "completed" even if the invoice is pending. That's eventual consistency, and it's the design.
 
-If you need stronger guarantees (citizen cannot see "completed" until billing confirms), coordinate it:
+If you need stronger guarantees (user cannot see "completed" until billing confirms), coordinate it:
 
 - orchestrator waits for billing to ack before marking the workflow done (synchronous call or saga)
 - or billing becomes part of the workflow graph (orchestrator invokes it as a step)
@@ -278,53 +278,53 @@ Choose based on the domain requirement, not religion.
 ## Reconciliation example (TypeScript)
 
 ```ts
-// Reconciliation job for citizen status read model
-async function reconcileCitizenStatus(citizenId: string) {
+// Reconciliation job for user status read model
+async function reconcileUserStatus(userId: string) {
   // Fetch current state from systems of record
   const [profile, workflows] = await Promise.all([
-    identityClient.getProfile(citizenId),
-    orchestratorClient.listWorkflows({ citizenId }),
+    identityClient.getProfile(userId),
+    orchestratorClient.listWorkflows({ userId }),
   ]);
 
   // Fetch our local read model
   const readModel = await db.query(
-    `SELECT * FROM citizen_status_view WHERE citizen_id = $1`,
-    [citizenId]
+    `SELECT * FROM user_status_view WHERE user_id = $1`,
+    [userId]
   );
 
   // Compare versions
   if (readModel.profile_version !== profile.version) {
     console.log('Profile drift detected', {
-      citizenId,
+      userId,
       expected: profile.version,
       actual: readModel.profile_version,
     });
 
     // Rebuild from source
     await db.query(
-      `UPDATE citizen_status_view
+      `UPDATE user_status_view
        SET profile_version = $1, email = $2, updated_at = NOW()
-       WHERE citizen_id = $3`,
-      [profile.version, profile.email, citizenId]
+       WHERE user_id = $3`,
+      [profile.version, profile.email, userId]
     );
   }
 
   if (readModel.workflow_count !== workflows.length) {
     console.log('Workflow count drift detected', {
-      citizenId,
+      userId,
       expected: workflows.length,
       actual: readModel.workflow_count,
     });
 
     // Rebuild workflow summary
-    await rebuildWorkflowSummary(citizenId, workflows);
+    await rebuildWorkflowSummary(userId, workflows);
   }
 }
 ```
 
 Run this:
 
-- nightly for all active citizens
+- nightly for all active users
 - on-demand when support sees a mismatch
 - as part of a health check before high-value operations
 
@@ -346,7 +346,7 @@ Database-centric services own entities and expose them. Event-driven flows compo
 
 For each entity, pick one system of record. Let others subscribe or query. Use outbox or CDC to make publish durable. Build read models when you need fast local queries. Reconcile when drift is inevitable.
 
-On Digital Government Platforms where citizen workflows span identity, orchestration, billing, and audit, clarifying that seam early is cheaper than debugging "which is the real state?" incidents later.
+On multi-service platforms where user workflows span identity, orchestration, billing, and audit, clarifying that seam early is cheaper than debugging "which is the real state?" incidents later.
 
 ---
 
